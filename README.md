@@ -9,7 +9,7 @@ installs the plugin into the default Albert Python plugins directory on Linux
 
 ## kde_windows
 
-**Default trigger prefix**: `q `
+**Default trigger prefix**: `w `
 
 Allows you to search through open windows, kinda like what KRunner does — but in Albert.
 
