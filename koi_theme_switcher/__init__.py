@@ -40,6 +40,15 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 
     def handleTriggerQuery(self, query):
         items = []
+        if not query.string or query.string.lower() in "toggle":
+            items.append(
+                StandardItem(
+                    id = self.id + "-togglemode",
+                    iconUrls=["xdg:koi_tray"],
+                    text = 'Koi: Toggle mode',
+                    actions = [Action('koi toggle', 'Koi: Toggle mode', lambda ctl=self.controller: ctl.toggle())]
+                )
+            )
         if not query.string or query.string.lower() in "light":
             items.append(
                 StandardItem(
@@ -58,16 +67,6 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                     actions = [Action('koi darkmode', 'Koi: Dark mode', lambda ctl=self.controller: ctl.dark_mode())]
                 )
             )
-        if not query.string or query.string.lower() in "toggle":
-            items.append(
-                StandardItem(
-                    id = self.id + "-togglemode",
-                    iconUrls=["xdg:koi_tray"],
-                    text = 'Koi: Toggle mode',
-                    actions = [Action('koi toggle', 'Koi: Toggle mode', lambda ctl=self.controller: ctl.toggle())]
-                )
-            )
         if items:
             query.add(items)
-
 
